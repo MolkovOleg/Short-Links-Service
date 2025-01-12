@@ -13,7 +13,7 @@ public class LinkRepository implements Repository {
 
     // Создаем коллекцию пользователей ID и объектов User
     private final Map<String, User> users = new HashMap<>();
-    private FileStorage fileStorage = new FileStorage();
+    private final FileStorage fileStorage = new FileStorage();
 
     public LinkRepository() {
         // Загружаем данные из JSON-файла при создании репозитория
@@ -35,11 +35,6 @@ public class LinkRepository implements Repository {
     @Override
     public void deleteUser(String userId) {
         users.remove(userId);
-    }
-
-    @Override
-    public void updateUser(User user) {
-        users.put(user.getUserId(), user);
     }
 
     @Override

@@ -74,6 +74,14 @@ public class LinkService {
         return newUser;
     }
 
+    // Удаление текущего пользователя
+    public void deleteCurrentUser() {
+        if (currentUserId == null) {
+            throw new IllegalStateException("Текущий пользователь не установлен.");
+        }
+        repository.deleteUser(currentUserId);
+        currentUserId = null;
+    }
 
     // Установка текущего пользователя
     public void setCurrentUser(String userId) throws UserNotFoundException {

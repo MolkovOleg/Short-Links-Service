@@ -10,8 +10,6 @@ public interface Repository {
 
     void saveUser(User user);
 
-    void updateUser(User user);
-
     void deleteUser(String userId);
 
     List<User> findAllUsers();

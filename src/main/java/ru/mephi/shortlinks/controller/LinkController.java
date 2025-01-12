@@ -33,7 +33,8 @@ public class LinkController {
                     case 5 -> redirectLink();
                     case 6 -> setUser();
                     case 7 -> createUser();
-                    case 8 -> {
+                    case 8 -> deleteCurrentUser();
+                    case 9 -> {
                         System.out.println("Программа завершена. До скорой встречи!");
                         System.exit(0);
                     }
@@ -55,7 +56,8 @@ public class LinkController {
         System.out.println("5. Переход по короткой ссылке");
         System.out.println("6. Сменить пользователя");
         System.out.println("7. Создать пользователя");
-        System.out.println("8. Выйти");
+        System.out.println("8. Удалить текущего пользователя");
+        System.out.println("9. Выйти");
         System.out.print("\nВыберите номер действия: ");
     }
 
@@ -98,6 +100,22 @@ public class LinkController {
             System.out.println("\nОшибка: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("\nОшибка при установке пользователя: " + e.getMessage());
+        }
+    }
+
+    private void deleteCurrentUser() {
+        try {
+            System.out.print("Вы действительно хотите удалить текущего пользователя? (y/n): ");
+            String choice = scanner.nextLine();
+
+            if (choice.equalsIgnoreCase("y")) {
+                linkService.deleteCurrentUser();
+                System.out.println("Текущий пользователь успешно удален.");
+            } else {
+                System.out.println("Удаление текущего пользователя отменено.");
+            }
+        } catch (Exception e) {
+            System.out.println("\nОшибка при удалении пользователя: " + e.getMessage());
         }
     }
 
